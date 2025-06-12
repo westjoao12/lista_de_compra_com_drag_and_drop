@@ -67,9 +67,46 @@ function renderList() {
   });
 
   atualizaTotalComprados();
+  addDragAndDropEvents();
 }
 
 function atualizaTotalComprados() {
   const itensComprados = shoppingList.filter(i => i.bought).length;
   document.getElementById('summary').textContent = `Itens comprados: ${itensComprados}/${shoppingList.length}`;
+}
+
+let dragStartIndex;
+
+function addDragAndDropEvents() {
+  const listItems = document.querySelectorAll('#shoppingList li');
+
+  listItems.forEach((item, index) => {
+    item.setAttribute('draggable', true);
+
+    item.addEventListener('dragstart', () => {
+      dragStartIndex = index;
+      item.classList.add('dragging');
+    });
+
+    item.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    item.addEventListener('drop', () => {
+      const dragEndIndex = index;
+      reorderItems(dragStartIndex, dragEndIndex);
+      item.classList.remove('dragging');
+    });
+
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging');
+    });
+  });
+}
+
+function reorderItems(startIndex, endIndex) {
+  const movedItem = shoppingList[startIndex];
+  shoppingList.splice(startIndex, 1);
+  shoppingList.splice(endIndex, 0, movedItem);
+  renderList();
 }
