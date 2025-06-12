@@ -10,7 +10,7 @@
     <div id="login">
         <h2>Digite seu nome para começar:</h2>
         <input type="text" id="usernameInput" placeholder="Seu nome">
-        <button onclick="">Entrar</button>
+        <button onclick="startApp()">Entrar</button>
     </div>
 
     <div id="app" class="hidden">
@@ -21,11 +21,12 @@
 
         <div class="new-item">
             <input type="text" id="itemInput" placeholder="Novo item">
-            <button onclick="">Adicionar</button>
+            <button onclick="addItem()">Adicionar</button>
         </div>
 
         <p id="summary">Itens comprados: 0/0</p>
     </div>
     
+    <script src="js/script.js"></script>
 </body>
 </html>
