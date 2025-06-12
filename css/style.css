@@ -87,3 +87,10 @@ li.dragging {
   margin-top: 20px;
   gap: 10px;
 }
+
+#summary {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+}
