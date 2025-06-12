@@ -66,4 +66,10 @@ function renderList() {
     ul.appendChild(li);
   });
 
+  atualizaTotalComprados();
+}
+
+function atualizaTotalComprados() {
+  const itensComprados = shoppingList.filter(i => i.bought).length;
+  document.getElementById('summary').textContent = `Itens comprados: ${itensComprados}/${shoppingList.length}`;
 }
